@@ -451,7 +451,8 @@ class HTTPAdapter(BaseAdapter):
         :param proxies: (optional) The proxies dictionary to apply to the request.
         :rtype: requests.Response
         """
-
+        if timeout is None:
+            timeout = 10
         try:
             conn = self.get_connection(request.url, proxies)
         except LocationValueError as e:
